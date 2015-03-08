@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="app">
+<head>
+    <meta charset="utf-8" />
+    <title>angularCtrlShiftSelect example</title>
+    <style type="text/css">
+        body {
+            padding: 100px;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        table, tr, td {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+
+        td {
+            cursor: pointer;
+        }
+
+        th {
+            text-align: left;
+        }
+
+        .selected {
+            background: #c00;
+        }
+    </style>
+</head>
+<body>
+    <div ng-controller="ExampleCtrl">
+        <table ctrlshiftselect ctrlshiftselect-class="selected">            
+            <tr ng-repeat="item in items" ctrlshiftselect-model="item.isSelected"><td>{{item.text}}</td><td>{{item.isSelected || false}}</td></tr>
+        </table>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+    <script src="ctrlshiftselect.min.js"></script>
+
+    <script>
+        angular.module('app', ['davidbohunek.ctrlshiftselect'])
+               .controller('ExampleCtrl', ['$scope', function ($scope) {
+                   $scope.items = [
+                       { text: 'It is said that' },
+                       { text: 'your life flashes before' },
+                       { text: 'your eyes just before you die.' },
+                       { text: 'That is true, it\'s called Life.' }
+                   ];
+               }]);
+    </script>
+</body>
+</html>
