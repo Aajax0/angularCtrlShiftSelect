@@ -12,7 +12,7 @@ Installation
 Usage
 -----
 
-* Include module 'davidbohunek.ctrlshiftselect' in your app/module.
+* Include module 'davidbohunek.ctrlshiftselect' in your app/module
 * Use standard ``ng-repeat`` to render your list
 * Add attribute ``ctrlshiftselect`` to a root element of your items, e.g. to a ``table`` or ``ul`` element
 * In item template in your ``ng-repat`` (see example below) add attribute ``ctrlshiftselect-model="item.isSelected"`` (replace "item.isSelected" with whatever is relevant for you, this sets property on the model item to a boolean value depending if it's selected or not)
@@ -21,7 +21,7 @@ Usage
 Example
 -------
 ````javascript
-angular.module('app', ['davidbohunek.ctrlshiftselect'])
+angular.module('app', ['davidbohunek.ctrlshiftselect']);
 ````
 
 ````html
