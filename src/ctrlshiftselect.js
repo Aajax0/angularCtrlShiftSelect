@@ -20,11 +20,11 @@
                        if (value) {
                            lastSelectedItemScope = scope;
                        }
-                   }
+                   };
 
                    this.initChild = function (childItem) {
                        childItems.push(childItem);
-                   }
+                   };
 
                    this.onShiftClick = function (element, modelGetter, scope) {
 
@@ -49,14 +49,14 @@
                            }
                        }
 
-                   }
+                   };
 
                    this.onCtrlClick = function (element, modelGetter, scope) {
 
                        //revert selection of clicked item
                        var currentValue = modelGetter(scope);
                        setSelected(modelGetter, scope, !currentValue);
-                   }
+                   };
 
                    this.onPlainClick = function (element, modelGetter, scope) {
 
@@ -68,9 +68,9 @@
 
                        //select the clicked item
                        setSelected(modelGetter, scope, true);
-                   }
+                   };
                }
-           }
+           };
        }])
        .directive('ctrlshiftselectModel', ['$parse', function ($parse) {
            return {
@@ -92,9 +92,8 @@
                            element.removeClass(controller.selectedClass);
                        }
                    });
-
-                   element.on('mousedown', function (event) {
-
+                   
+                   var onMouseDown = function(event) {
                        //left mouse click
                        if (event.which !== 1) {
                            return true;
@@ -107,7 +106,13 @@
                        } else {
                            controller.onPlainClick(element, modelGetter, scope);
                        }
+                   };
+                   
+                   element.on('mousedown', onMouseDown);
+                   
+                   scope.$on("$destroy", function() {
+                        element.off('mousedown', onMouseDown);
                    });
                }
-           }
+           };
        }]);
